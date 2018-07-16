@@ -5,8 +5,6 @@ import { isFunction } from '../_untils'
 interface CountdownRenderProps {
     content: number | string
     running: boolean
-    start: () => void
-    reset: () => void
 }
 
 type CountdownProps = Partial<{
@@ -61,9 +59,7 @@ class Countdown extends PureComponent<CountdownProps, CountdownState> {
 
     render() {
         const { content, running } = this.state
-        return isFunction(this.props.children)
-            ? this.props.children!({ content, running, start: this.start, reset: this.reset })
-            : null
+        return isFunction(this.props.children) ? this.props.children!({ content, running }) : null
     }
 }
 
