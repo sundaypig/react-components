@@ -10,7 +10,7 @@
         "moduleResolution": "node",
         "noImplicitAny": true,
         "allowSyntheticDefaultImports": true,
-        "jsx": "preserve"
+        "jsx": "react"
     },
     "exclude": ["node_modules", "lib", "lib-esm", "dist"],
     "include": ["src/components"],

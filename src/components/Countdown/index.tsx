@@ -26,9 +26,9 @@ class Countdown extends PureComponent<CountdownProps, CountdownState> {
         initialContent: '验证码'
     }
 
-    timer: NodeJS.Timer
+    private timer: NodeJS.Timer
 
-    i = this.props.initialRemaining
+    private i = this.props.initialRemaining
 
     state = {
         running: false,
@@ -39,7 +39,7 @@ class Countdown extends PureComponent<CountdownProps, CountdownState> {
         clearTimeout(this.timer)
     }
 
-    start = (): void => {
+    public start = (): void => {
         this.i!--
         this.setState({ content: this.i!, running: true })
         this.timer = setTimeout(() => {
@@ -51,7 +51,7 @@ class Countdown extends PureComponent<CountdownProps, CountdownState> {
         }, this.props.interval!)
     }
 
-    reset = (): void => {
+    public reset = (): void => {
         clearTimeout(this.timer)
         this.i = this.props.initialRemaining
         this.setState({ content: this.props.initialContent!, running: false })
