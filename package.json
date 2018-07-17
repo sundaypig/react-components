@@ -1,13 +1,20 @@
 {
-    "name": "react-components",
-    "version": "1.0.0",
-    "description": "",
+    "name": "typescript-react-components",
+    "version": "0.0.2",
+    "description": "my react based compoents with typescript",
     "main": "lib/index.js",
     "module": "lib-esm/index.js",
+    "homepage": "https://github.com/sundaypig/react-components",
     "dependencies": {
         "react": "^16.4.1",
         "react-dom": "^16.4.1"
     },
+    "peerDependencies": {
+        "react": ">=16.0.0",
+        "react-dom": ">=16.0.0"
+    },
+    "keywords": ["typescript", "react", "react-component", "component", "components"],
+    "files": ["lib", "lib-esm"],
     "devDependencies": {
         "@types/node": "^10.5.2",
         "@types/react": "^16.4.6",

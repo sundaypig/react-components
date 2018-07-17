@@ -5,8 +5,12 @@ import Countdown from './components/Countdown'
 class Demo extends Component {
     countdown = createRef<Countdown>()
 
-    handleClick = (): void => {
+    handleClick = async (): Promise<void> => {
         this.countdown.current.start()
+        await new Promise((resolve, reject) => {
+            setTimeout(resolve, 3000)
+        })
+        this.countdown.current.reset()
     }
 
     render() {
