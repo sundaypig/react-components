@@ -6,6 +6,7 @@
     "module": "lib-esm/index.js",
     "homepage": "https://github.com/sundaypig/react-components",
     "dependencies": {
+        "exif-js": "^2.3.0",
         "react": "^16.4.1",
         "react-dom": "^16.4.1"
     },
@@ -13,8 +14,17 @@
         "react": ">=16.0.0",
         "react-dom": ">=16.0.0"
     },
-    "keywords": ["typescript", "react", "react-component", "component", "components"],
-    "files": ["lib", "lib-esm"],
+    "keywords": [
+        "typescript",
+        "react",
+        "react-component",
+        "component",
+        "components"
+    ],
+    "files": [
+        "lib",
+        "lib-esm"
+    ],
     "devDependencies": {
         "@types/node": "^10.5.2",
         "@types/react": "^16.4.6",
@@ -50,11 +60,13 @@
         "build": "npm run clean && tsc && tsc -m es6 --outDir lib-esm && gulp css",
         "precommit": "lint-staged",
         "clean": "rimraf lib lib-esm dist",
-        "start":
-            "cross-env NODE_ENV=development webpack-dev-server --progress --mode development --config webpack.config.js"
+        "start": "cross-env NODE_ENV=development webpack-dev-server --progress --mode development --config webpack.config.js"
     },
     "lint-staged": {
-        "*.{ts,tsx,less}": ["prettier --config ./.prettierrc --write", "git add"]
+        "*.{ts,tsx,less}": [
+            "prettier --config ./.prettierrc --write",
+            "git add"
+        ]
     },
     "author": "sundaypig",
     "license": "ISC"

@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react'
 
-import Countdown from './components/Countdown'
+import Countdown from '../../components/Countdown'
 
 class Demo extends Component {
     countdown = createRef<Countdown>()
