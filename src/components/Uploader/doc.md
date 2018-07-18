@@ -87,6 +87,6 @@ export default Demo
 | maxsize          | number         | 5 * 1024   | 单张图片最大上传尺寸                                        | false     |
 | fileList         | Array<{ id: string; progress: number; status: 'waiting' \| 'uploading' \| 'error' \| 'success'; name: string; response: any; src: string }> | [] | 图片数组 | true |
 | onChange         | (files: Array<{ id: string; progress: number; status: 'waiting' \| 'uploading' \| 'error' \| 'success'; name: string; response: any; src: string }>) => void | - | 文件状态改变回调 | true |
-| onComplete | (response: any) => object<{ status: 'error' \| 'success'; url: string; [key: string]: any }> | - | 上传成功回调 | true |
+| onComplete | (response: any) => { status: 'error' \| 'success'; url: string; [key: string]: any } | - | 上传成功回调 | true |
 | onError    | onError?: (errorMessage: string) => void | - | 错误处理回调 | false |  
 
