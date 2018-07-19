@@ -167,8 +167,7 @@ class Uploader extends Component<UploaderProps, UploaderState> {
         if (!_uploadTarget || !_previewTarget) {
             return
         }
-        _uploadTarget.status = 'uploading'
-        _previewTarget.status = 'uploading'
+        _uploadTarget.status = _previewTarget.status = 'uploading'
         const newPreviewImages = this.fileList.map(item => {
             return item.id === id ? Object.assign(item, { status: 'uploading' }) : item
         })
