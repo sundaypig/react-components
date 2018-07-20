@@ -62,8 +62,8 @@
         "precommit": "lint-staged",
         "clean": "rimraf lib lib-esm dist",
         "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook",
-        "deploy-storybook": "storybook-to-ghpages"
+        "build-storybook": "rimraf docs && build-storybook -c .storybook -o docs",
+        "deploy-storybook": "rimraf .out && storybook-to-ghpages"
     },
     "storybook-deployer": {
         "gitUsername": "sundaypig",
