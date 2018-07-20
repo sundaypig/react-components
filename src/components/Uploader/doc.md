@@ -39,24 +39,24 @@ class UploaderDemo extends PureComponent {
                             <p>图片上传</p>
                         </div>
                         <div className={styles.uploadView}>
-                            {fileList.map(image => (
-                                <div className={styles.wrapper} key={image.id}>
-                                    <div className={styles.container}>
-                                        <div
-                                            style={{ background: `url(${image.src}) no-repeat center center / contain` }}
-                                        />
-                                        {(image.progress === 100 && image.status !== 'uploading') ||
-                                        image.status === 'error' ? null : (
-                                            <span>{`${image.progress}%`}</span>
-                                        )}
-                                    </div>
-                                    {image.status === 'success' || image.status === 'uploading' ? (
-                                        <div className={styles.deleteBtn} onClick={() => deleteFile(image.id)}>
-                                            <span />
+                            {
+                                fileList.map(image => (
+                                    <div className={styles.wrapper} key={image.id}>
+                                        <div className={styles.container}>
+                                            <div style={{ background: `url(${image.src}) no-repeat center center / contain` }}></div>
+                                            {(image.progress === 100 && image.status !== 'uploading') ||
+                                            image.status === 'error' ? null : (
+                                                <span>{`${image.progress}%`}</span>
+                                            )}
                                         </div>
-                                    ) : null}
-                                </div>
-                            ))}
+                                        {image.status === 'success' || image.status === 'uploading' ? (
+                                            <div className={styles.deleteBtn} onClick={() => deleteFile(image.id)}>
+                                                <span />
+                                            </div>
+                                        ) : null}
+                                    </div>
+                                ))
+                            }
                             <div className={styles.plusBtnWrapper}>
                                 <label className={styles.plusBtn} htmlFor={triggerId} />
                             </div>
