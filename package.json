@@ -14,15 +14,23 @@
         "react": ">=16.0.0",
         "react-dom": ">=16.0.0"
     },
-    "keywords": ["typescript", "react", "react-component", "component", "components"],
-    "files": ["lib", "lib-esm"],
+    "keywords": [
+        "typescript",
+        "react",
+        "react-component",
+        "component",
+        "components"
+    ],
+    "files": [
+        "lib",
+        "lib-esm"
+    ],
     "devDependencies": {
         "@storybook/addon-actions": "^4.0.0-alpha.14",
         "@storybook/addon-info": "^3.4.8",
         "@storybook/addon-links": "^4.0.0-alpha.14",
         "@storybook/addons": "^4.0.0-alpha.14",
         "@storybook/react": "^4.0.0-alpha.14",
-        "@storybook/storybook-deployer": "^2.3.0",
         "@types/enzyme": "^3.1.12",
         "@types/jest": "^23.3.0",
         "@types/node": "^10.5.2",
@@ -62,8 +70,7 @@
         "precommit": "lint-staged",
         "clean": "rimraf lib lib-esm dist",
         "storybook": "start-storybook -p 6006",
-        "build-storybook": "rimraf docs && build-storybook -c .storybook -o docs",
-        "deploy-storybook": "rimraf .out && storybook-to-ghpages"
+        "build-storybook": "rimraf docs && build-storybook -c .storybook -o docs"
     },
     "storybook-deployer": {
         "gitUsername": "sundaypig",
@@ -71,7 +78,10 @@
         "commitMessage": "Deploy Storybook to GitHub Pages"
     },
     "lint-staged": {
-        "*.{ts,tsx,less}": ["prettier --config ./.prettierrc --write", "git add"]
+        "*.{ts,tsx,less}": [
+            "prettier --config ./.prettierrc --write",
+            "git add"
+        ]
     },
     "author": {
         "name": "sundaypig",
@@ -83,6 +93,13 @@
             "^.+\\.tsx?$": "ts-jest"
         },
         "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-        "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json",
+            "node"
+        ]
     }
 }
