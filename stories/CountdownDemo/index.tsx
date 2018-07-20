@@ -1,8 +1,8 @@
-import React, { Component, createRef } from 'react'
+import React, { PureComponent, createRef } from 'react'
 
-import Countdown from '../../components/Countdown'
+import Countdown from '../../src/components/Countdown'
 
-class Demo extends Component {
+class CountdownDemo extends PureComponent {
     countdown = createRef<Countdown>()
 
     handleClick = async (): Promise<void> => {
@@ -26,4 +26,4 @@ class Demo extends Component {
     }
 }
 
-export default Demo
+export default CountdownDemo

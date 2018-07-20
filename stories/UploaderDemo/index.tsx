@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-import Uploader from '../../components/Uploader'
+import Uploader from '../../src/components/Uploader'
+import styles from './index.less'
 
-const styles = require('./style.less')
-
-class Demo extends Component {
+class UploaderDemo extends PureComponent {
     state = {
         files: []
     }
@@ -67,4 +66,4 @@ class Demo extends Component {
     }
 }
 
-export default Demo
+export default UploaderDemo

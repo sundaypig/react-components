@@ -7,6 +7,8 @@ const inputStyle = {
     display: 'none'
 }
 
+const isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
+
 export interface UploaderRenderProps {
     triggerId: string
     fileList: FileItem[]
@@ -87,6 +89,7 @@ class Uploader extends Component<UploaderProps, UploaderState> {
     }
 
     private handleInputChange = async (event: ChangeEvent<HTMLInputElement>): Promise<void> => {
+        event.preventDefault()
         const files = Array.from(event.target.files!)
         const { maxsize, onError } = this.props
         if (!this.checkLength(files.length)) {
@@ -336,6 +339,10 @@ class Uploader extends Component<UploaderProps, UploaderState> {
 
     render() {
         const { multiple, triggerId, children, fileList } = this.props
+        const restProps: any = {}
+        if (!isiOS) {
+            restProps.capture = 'camera'
+        }
         return (
             <>
                 {isFunction(children) ? children!({ triggerId, fileList, deleteFile: this.handleDelete }) : null}
@@ -347,6 +354,7 @@ class Uploader extends Component<UploaderProps, UploaderState> {
                     multiple={multiple}
                     onChange={this.handleInputChange}
                     style={inputStyle}
+                    {...restProps}
                 />
             </>
         )
