@@ -2,6 +2,8 @@
 
 my react based compoents with typescript.
 
+# [DEMO](https://sundaypig.github.io/react-components/)
+
 ## Installation
 
 ```
