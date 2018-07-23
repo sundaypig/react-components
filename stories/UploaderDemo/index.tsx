@@ -1,18 +1,20 @@
 import React, { PureComponent } from 'react'
 
-import Uploader from '../../src/components/Uploader'
+import Uploader, { FileItem } from '../../src/components/Uploader'
 import styles from './index.less'
 
-class UploaderDemo extends PureComponent {
-    state = {
+type State = Readonly<{ files: FileItem[] }>
+
+class UploaderDemo extends PureComponent<{}, State> {
+    readonly state: State = {
         files: []
     }
 
-    handleChange = files => {
+    handleChange = (files: FileItem[]) => {
         this.setState({ files })
     }
 
-    handleComplete = res => {
+    handleComplete = (res: any) => {
         return {
             url: res.errcode === 0 ? (res.file_path as string) : '',
             status: (res.errcode === 0 ? 'success' : 'error') as 'success' | 'error',

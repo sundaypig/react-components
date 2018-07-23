@@ -6,11 +6,11 @@ class CountdownDemo extends PureComponent {
     countdown = createRef<Countdown>()
 
     handleClick = async (): Promise<void> => {
-        this.countdown.current.start()
+        this.countdown!.current!.start()
         await new Promise((resolve, reject) => {
             setTimeout(resolve, 3000)
         })
-        this.countdown.current.reset()
+        this.countdown!.current!.reset()
     }
 
     render() {

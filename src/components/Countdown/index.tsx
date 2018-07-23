@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 
 import { isFunction } from '../_untils'
 
-interface CountdownRenderProps {
+type CountdownRenderProps = {
     content: number | string
     running: boolean
 }
@@ -14,10 +14,7 @@ type CountdownProps = Partial<{
     children(props: CountdownRenderProps): JSX.Element
 }>
 
-interface CountdownState {
-    running: boolean
-    content: number | string
-}
+type CountdownState = Readonly<CountdownRenderProps>
 
 class Countdown extends PureComponent<CountdownProps, CountdownState> {
     static defaultProps: CountdownProps = {
@@ -30,7 +27,7 @@ class Countdown extends PureComponent<CountdownProps, CountdownState> {
 
     private i = this.props.initialRemaining
 
-    state = {
+    readonly state: CountdownState = {
         running: false,
         content: this.props.initialContent!
     }
