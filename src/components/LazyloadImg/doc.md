@@ -96,8 +96,8 @@ export default LazyloadImgDemo
 
 ## Props
 
-| prop             | type           | default    | description                                               |
-|------------------|----------------|------------|-----------------------------------------------------------|
-| src              | string         | -          | 真实图片资源                                               |
-| placeholder      | string         | -          | 图片占位                                                   |
-| offset           | number         | 0          | 偏移量                                                     |
+| prop             | type           | default    | description                                               | required |
+|------------------|----------------|------------|-----------------------------------------------------------|----------|
+| src              | string         | -          | 真实图片资源                                               | true     |
+| placeholder      | string         | -          | 图片占位                                                   | true     |
+| offset           | number         | 0          | 偏移量                                                     | false    |
