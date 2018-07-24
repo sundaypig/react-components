@@ -26,6 +26,7 @@ class LazyloadImg extends PureComponent<LazyloadImgProps, LazyloadImgState> {
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll)
+        this.handleScroll()
     }
 
     componentWillUnmount() {

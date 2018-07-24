@@ -1,6 +1,6 @@
 {
     "name": "typescript-react-components",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "description": "my react based compoents with typescript",
     "main": "lib/index.js",
     "module": "lib-esm/index.js",
