@@ -75,7 +75,7 @@ export default UploaderDemo
 
 ## Props
 
-| prop       | type                                                                                                                                                         | default       | description          | necessity |
+| prop       | type                                                                                                                                                         | default       | description          | required |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- | -------------------- | --------- |
 | multiple   | boolean                                                                                                                                                      | false         | 是否需要多选         | false     |
 | triggerId  | string                                                                                                                                                       | uploadTrigger | 触发元素 Id          | true      |
