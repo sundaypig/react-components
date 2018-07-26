@@ -15,3 +15,4 @@ npm install typescript-react-components --save
 - ### [Countdown](https://github.com/sundaypig/react-components/blob/master/src/components/Countdown/doc.md)
 - ### [Uploader](https://github.com/sundaypig/react-components/blob/master/src/components/Uploader/doc.md)
 - ### [LazyloadImg](https://github.com/sundaypig/react-components/blob/master/src/components/LazyloadImg/doc.md)
+- ### [DrawingBoard](https://github.com/sundaypig/react-components/blob/master/src/components/DrawingBoard/doc.md)

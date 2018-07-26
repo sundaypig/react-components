@@ -1,4 +1,4 @@
-import React, { PureComponent, createRef, MouseEvent, CSSProperties } from 'react'
+import React, { PureComponent, createRef, MouseEvent, CSSProperties, TouchEvent } from 'react'
 
 import { isFunction, dataURItoBlob } from '../_untils'
 
@@ -15,10 +15,7 @@ type DrawingBoardProps = {
     lineWidth?: number
     onSave?: (blob: Blob) => void
     children(props: DrawingBoardRenderProps): JSX.Element
-}
-
-const canvasStyle: CSSProperties = {
-    display: 'block'
+    canvasStyle?: CSSProperties
 }
 
 class DrawingBoard extends PureComponent<DrawingBoardProps> {
@@ -44,22 +41,23 @@ class DrawingBoard extends PureComponent<DrawingBoardProps> {
 
     private save = (): void => {
         const { onSave } = this.props
-        if (!this.canvas.current) {
+        if (!this.canvas.current || onSave === undefined) {
             return
         }
-        if (onSave === undefined) {
-            return
-        }
-        const dataURL = this.canvas.current!.toDataURL('image/jpeg')
+        const dataURL = this.canvas.current.toDataURL('image/jpeg')
         onSave(dataURItoBlob(dataURL))
     }
 
     private clear = (): void => {
+        if (!this.canvas.current) {
+            return
+        }
         const { width, height } = this.props
         this.ctx.clearRect(0, 0, width!, height!)
     }
 
     private handleMousedown = (event: MouseEvent<HTMLCanvasElement>) => {
+        event.preventDefault()
         const ctx = this.ctx
         const canvas = this.canvas.current!
         this.canDraw = true
@@ -67,11 +65,21 @@ class DrawingBoard extends PureComponent<DrawingBoardProps> {
         this.originY = event.clientY - canvas.offsetTop
         ctx.strokeStyle = this.props.color!
         ctx.lineWidth = this.props.lineWidth!
-        ctx.moveTo(this.originX, this.originY)
-        ctx.beginPath()
+    }
+
+    private handleTouchStart = (event: TouchEvent<HTMLCanvasElement>) => {
+        event.preventDefault()
+        const ctx = this.ctx
+        const canvas = this.canvas.current!
+        this.canDraw = true
+        this.originX = event.touches[0].clientX - canvas.getBoundingClientRect().left
+        this.originY = event.touches[0].clientY - canvas.getBoundingClientRect().top
+        ctx.strokeStyle = this.props.color!
+        ctx.lineWidth = this.props.lineWidth!
     }
 
     private handleMousemove = (event: MouseEvent<HTMLCanvasElement>) => {
+        event.preventDefault()
         if (!this.canDraw) {
             return
         }
@@ -79,8 +87,29 @@ class DrawingBoard extends PureComponent<DrawingBoardProps> {
         const ctx = this.ctx
         const x = event.clientX - canvas.offsetLeft
         const y = event.clientY - canvas.offsetTop
+        ctx.beginPath()
+        ctx.moveTo(this.originX, this.originY)
         ctx.lineTo(x, y)
         ctx.stroke()
+        this.originX = x
+        this.originY = y
+    }
+
+    private handleTouchMove = (event: TouchEvent<HTMLCanvasElement>) => {
+        event.preventDefault()
+        if (!this.canDraw) {
+            return
+        }
+        const canvas = this.canvas.current!
+        const ctx = this.ctx
+        const x = event.touches[0].clientX - canvas.getBoundingClientRect().left
+        const y = event.touches[0].clientY - canvas.getBoundingClientRect().top
+        ctx.beginPath()
+        ctx.moveTo(this.originX, this.originY)
+        ctx.lineTo(x, y)
+        ctx.stroke()
+        this.originX = x
+        this.originY = y
     }
 
     private stopDraw = () => {
@@ -99,10 +128,13 @@ class DrawingBoard extends PureComponent<DrawingBoardProps> {
                 onMouseUp={this.stopDraw}
                 onMouseLeave={this.stopDraw}
                 onMouseMove={this.handleMousemove}
+                onTouchStart={this.handleTouchStart}
+                onTouchEnd={this.stopDraw}
+                onTouchMove={this.handleTouchMove}
                 width={width}
                 height={height}
                 ref={this.canvas}
-                style={canvasStyle}
+                style={this.props.canvasStyle}
             />
         )
         return isFunction(children) ? children({ save: this.save, drawingBoard, clear: this.clear }) : null

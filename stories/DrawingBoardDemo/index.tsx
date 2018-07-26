@@ -24,7 +24,7 @@ class DrawingBoardDemo extends Component {
         return (
             <DrawingBoard
                 color="red"
-                lineWidth={30}
+                lineWidth={3}
                 onSave={blob => {
                     blobToDataURL(blob, src => {
                         this.setState({ src })
