@@ -121,7 +121,7 @@ class DrawingBoard extends PureComponent<DrawingBoardProps> {
     }
 
     render() {
-        const { children, width, height } = this.props
+        const { children, width, height, canvasStyle } = this.props
         const drawingBoard = (
             <canvas
                 onMouseDown={this.handleMousedown}
@@ -134,7 +134,7 @@ class DrawingBoard extends PureComponent<DrawingBoardProps> {
                 width={width}
                 height={height}
                 ref={this.canvas}
-                style={this.props.canvasStyle}
+                style={canvasStyle}
             />
         )
         return isFunction(children) ? children({ save: this.save, drawingBoard, clear: this.clear }) : null
