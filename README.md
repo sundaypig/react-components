@@ -2,7 +2,7 @@
 
 my react based compoents with typescript.
 
-# [DEMO](https://sundaypig.github.io/react-components/)
+# [DEMO](https://xieqingtian.github.io/react-components/)
 
 ## Installation
 
