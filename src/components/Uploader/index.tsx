@@ -246,7 +246,7 @@ class Uploader extends Component<UploaderProps, UploaderState> {
                 EXIF.getData(file as any, function() {
                     EXIF.getAllTags(this)
                     const orientation = EXIF.getTag(this, 'Orientation')
-                    that.compressImage(reader.result, orientation, file, resolve)
+                    that.compressImage(reader.result as string, orientation, file, resolve)
                 })
             }
             reader.readAsDataURL(file)
